@@ -43,8 +43,8 @@ public class DriveTrain extends Subsystem {
     
     /**
      * Tank drive for main drivetrain.
-     * @param left Left motor value
-     * @param right Right motor value
+     * @param left Left motor value (-1 to 1)
+     * @param right Right motor value (-1 to 1)
      */
     public void tankDrive(double left, double right) {
         moveLeftMotor(left);
@@ -53,8 +53,8 @@ public class DriveTrain extends Subsystem {
     
     /**
      * Reversed controls tankDrive.
-     * @param right Right motor value
-     * @param left Left motor value
+     * @param right Right motor value (-1 to 1)
+     * @param left Left motor value (-1 to 1)
      */
     public void reverseTankDrive(double right, double left) {
         moveRightMotor(right);
@@ -86,7 +86,7 @@ public class DriveTrain extends Subsystem {
     
     /**
      * 
-     * @param speed 
+     * @param speed The speed to set. Value should be between -1.0 and 1.0.
      */
     
     private void moveLeftMotor(double speed)
@@ -97,7 +97,7 @@ public class DriveTrain extends Subsystem {
     
     /**
      * 
-     * @param speed 
+     * @param speed The speed to set. Value should be between -1.0 and 1.0.
      */
     
     private void moveRightMotor(double speed)

@@ -1,11 +1,9 @@
 package edu.wpi.first.wpilibj.fulldummy.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.fulldummy.OI;
 import edu.wpi.first.wpilibj.fulldummy.subsystems.AxisCam;
 import edu.wpi.first.wpilibj.fulldummy.subsystems.DriveTrain;
-import edu.wpi.first.wpilibj.fulldummy.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.fulldummy.subsystems.Gyroscope;
 import edu.wpi.first.wpilibj.fulldummy.subsystems.SonicArray;
 
@@ -19,7 +17,6 @@ public abstract class CommandBase extends Command {
 
     public static OI oi;
     // Create a single static instance of all of your subsystems
-    public static ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
     public static DriveTrain drivetrain = new DriveTrain();
     public static Gyroscope gyro = new Gyroscope();
     public static SonicArray sonicarray = new SonicArray();
@@ -34,7 +31,6 @@ public abstract class CommandBase extends Command {
         oi = new OI();
 
         // Show what command your subsystem is running on the SmartDashboard
-        SmartDashboard.putData(exampleSubsystem);
     }
 
     public CommandBase(String name) {
