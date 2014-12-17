@@ -11,7 +11,7 @@ package edu.wpi.first.wpilibj.fulldummy.commands;
  */
 public class TurnForDegrees extends CommandBase {
     
-    private static final double kScale = 0.003;
+    private static final double kScale = 0.0003;
     private static final double kThresh = 2.0;
     private double target;
     private double angle;
