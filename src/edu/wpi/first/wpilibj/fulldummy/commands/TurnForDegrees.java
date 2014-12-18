@@ -11,8 +11,8 @@ package edu.wpi.first.wpilibj.fulldummy.commands;
  */
 public class TurnForDegrees extends CommandBase {
     
-    private static final double kScale = 0.0003;
-    private static final double kThresh = 2.0;
+    private static final double kScale = 0.003;
+    private static final double kThresh = 5.0;
     private double target;
     private double angle;
     private double error;
@@ -20,27 +20,29 @@ public class TurnForDegrees extends CommandBase {
     public TurnForDegrees(double angle) {
         requires(drivetrain);
         requires(gyro);
-        setTimeout(10); // If turning for more than 10 seconds, somethings wrong.
+        setTimeout(15); // If turning for more than 15 seconds, somethings wrong.
         this.angle = angle;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        target = gyro.getAngle() + angle;
+        target = (gyro.getAngle()*360) + angle;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        error = target - gyro.getAngle();
+        error = target - (gyro.getAngle()*360);
         double vel = error*kScale;
         if(vel > 1) vel = 1;
         if(vel < -1) vel = -1;
-        drivetrain.tankDrive(vel, -vel);
+        System.out.println(-vel + " " + vel);
+        drivetrain.tankDrive(-vel, vel);
+        System.out.println(error);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return ((Math.abs(error) > kThresh) || isTimedOut());
+        return ((Math.abs(error) < kThresh) || isTimedOut());
     }
 
     // Called once after isFinished returns true
